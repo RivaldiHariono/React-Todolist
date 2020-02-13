@@ -23,11 +23,16 @@ const TodoList = () => {
       text: "Belajar php"
     }
   ]);
+  const addTodo = value => {
+    const addedTodo = [...todos, { text: value }];
+    setTodos(addedTodo);
+  };
+
   return (
     // className nama lain dari class
     <Paper>
       <Header />
-      <Todoform />
+      <Todoform addTodo={addTodo} />
       <Todos todos={todos} />
     </Paper>
   );
