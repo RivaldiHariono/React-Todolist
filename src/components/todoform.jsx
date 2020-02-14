@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 // useState = mini database di dalam todoform ini
-const todoform = ({ addTodo }) => {
+const todoform = ({ addTodo, showAdd }) => {
   const [value, setValue] = useState("");
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -14,23 +14,27 @@ const todoform = ({ addTodo }) => {
     }
   };
 
-  console.log("value", value);
-  return (
-    <section className="add">
-      <form className="add-form" onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          className="add-input"
-          onChange={e => setValue(e.target.value)}
-          value={value}
-        />
-        <button className="add-btn">Add</button>
-      </form>
-    </section>
-  );
+  if (showAdd) {
+    return (
+      <section className="add">
+        <form className="add-form" onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            className="add-input"
+            onChange={e => setValue(e.target.value)}
+            value={value}
+          />
+          <button className="add-btn">Add</button>
+        </form>
+      </section>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default todoform;
 todoform.propTypes = {
-  addTodo: PropTypes.func.isRequired
+  addTodo: PropTypes.func.isRequired,
+  showAdd: PropTypes.bool.isRequired
 };

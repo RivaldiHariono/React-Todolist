@@ -23,16 +23,20 @@ const TodoList = () => {
       text: "Belajar php"
     }
   ]);
+
+  const [showAdd, setShowAdd] = useState(false);
+
   const addTodo = value => {
     const addedTodo = [...todos, { text: value }];
     setTodos(addedTodo);
   };
+  const showAddToggle = () => setShowAdd(!showAdd);
 
   return (
     // className nama lain dari class
     <Paper>
-      <Header />
-      <Todoform addTodo={addTodo} />
+      <Header showAddToggle={showAddToggle} />
+      <Todoform addTodo={addTodo} showAdd={showAdd} />
       <Todos todos={todos} />
     </Paper>
   );
