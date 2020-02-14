@@ -8,9 +8,13 @@ const todoform = ({ addTodo, showAdd }) => {
     if (value === "") {
       alert("No ToDo");
     } else {
-      addTodo(value);
-      alert(value);
-      setValue("");
+      if (value.length > 30) {
+        alert("Too Length");
+      } else {
+        addTodo(value);
+        alert(value);
+        setValue("");
+      }
     }
   };
 

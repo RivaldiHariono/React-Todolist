@@ -35,7 +35,7 @@ const TodoList = () => {
   return (
     // className nama lain dari class
     <Paper>
-      <Header showAddToggle={showAddToggle} />
+      <Header showAddToggle={showAddToggle} showAdd={showAdd} />
       <Todoform addTodo={addTodo} showAdd={showAdd} />
       <Todos todos={todos} />
     </Paper>
