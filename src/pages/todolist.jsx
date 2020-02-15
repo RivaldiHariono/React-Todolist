@@ -27,7 +27,7 @@ const TodoList = () => {
     }
     setTodos(addedTodo);
   };
-  const clearTodo = () => setTodos([]);
+  const clearTodo = () => !showAdd && setTodos([]);
   const showAddToggle = () => setShowAdd(!showAdd);
 
   console.log("todos", todos);
