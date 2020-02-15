@@ -107,3 +107,8 @@ html {
   left: 50%;
   transform: translate(-50%);
 }
+.placeholder {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Homamade Apple", sans-serif;
+}

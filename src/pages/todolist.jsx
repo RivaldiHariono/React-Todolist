@@ -6,38 +6,41 @@ import Todoform from "../components/todoform";
 import Todos from "../components/todos";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([
-    {
-      text: "Belajar React"
-    },
-    {
-      text: "Belajar php"
-    },
-    {
-      text: "Belajar Javascript"
-    },
-    {
-      text: "Belajar React"
-    },
-    {
-      text: "Belajar php"
-    }
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const [showAdd, setShowAdd] = useState(false);
 
   const addTodo = value => {
-    const addedTodo = [...todos, { text: value }];
+    if (todos.length < 5) {
+      const addedTodo = [...todos, { text: value, isCompleted: false }];
+      setTodos(addedTodo);
+    } else {
+      alert("Hanya 5 todos");
+    }
+  };
+  const completedTodo = index => {
+    const addedTodo = [...todos];
+    if (addedTodo[index].isCompleted === false) {
+      addedTodo[index].isCompleted = true;
+    } else {
+      addedTodo[index].isCompleted = false;
+    }
     setTodos(addedTodo);
   };
+  const clearTodo = () => setTodos([]);
   const showAddToggle = () => setShowAdd(!showAdd);
 
+  console.log("todos", todos);
   return (
     // className nama lain dari class
     <Paper>
-      <Header showAddToggle={showAddToggle} showAdd={showAdd} />
+      <Header
+        showAddToggle={showAddToggle}
+        showAdd={showAdd}
+        clearTodo={clearTodo}
+      />
       <Todoform addTodo={addTodo} showAdd={showAdd} />
-      <Todos todos={todos} />
+      <Todos todos={todos} completeTodo={completedTodo} />
     </Paper>
   );
 };
